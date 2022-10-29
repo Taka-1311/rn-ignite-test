@@ -4,10 +4,13 @@ import { color, spacing } from "../../theme"
 /**
  * All text will start off looking like this.
  */
+
+type ButtonTypes = 'Primary' | 'PrimaryBlue' | 'Secondary';
+
 const BASE_VIEW: ViewStyle = {
-  paddingVertical: spacing[2],
-  paddingHorizontal: spacing[2],
-  borderRadius: 4,
+  paddingVertical: spacing[3],
+  paddingHorizontal: spacing[3],
+  borderRadius: 50,
   justifyContent: "center",
   alignItems: "center",
 }
@@ -21,31 +24,44 @@ const BASE_TEXT: TextStyle = {
  *
  * You want to customize these to whatever you need in your app.
  */
-export const viewPresets: Record<string, ViewStyle> = {
+export const viewPresets: Record<ButtonTypes, ViewStyle> = {
   /**
    * A smaller piece of secondard information.
    */
-  primary: { ...BASE_VIEW, backgroundColor: color.palette.orange } as ViewStyle,
 
-  /**
-   * A button without extras.
-   */
-  link: {
+  Primary: {
     ...BASE_VIEW,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    alignItems: "flex-start",
-  } as ViewStyle,
+    backgroundColor: color.palette.red
+  },
+
+  PrimaryBlue: {
+    ...BASE_VIEW,
+    backgroundColor: color.palette.blue
+  },
+
+  Secondary: {
+    ...BASE_VIEW,
+    backgroundColor: color.palette.offWhite
+  }
 }
 
 export const textPresets: Record<ButtonPresetNames, TextStyle> = {
-  primary: { ...BASE_TEXT, fontSize: 9, color: color.palette.white } as TextStyle,
-  link: {
+  Primary: {
     ...BASE_TEXT,
-    color: color.text,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-  } as TextStyle,
+    fontSize: 16,
+    color: color.palette.white
+  },
+  PrimaryBlue: {
+    ...BASE_TEXT,
+    fontSize: 16,
+    color: color.palette.white
+  },
+  Secondary: {
+    ...BASE_TEXT,
+    fontSize: 16,
+    color: color.palette.blue
+  }
+
 }
 
 /**

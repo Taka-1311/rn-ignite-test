@@ -12,7 +12,7 @@ import { ButtonProps } from "./button.props"
 export function Button(props: ButtonProps) {
   // grab the props
   const {
-    preset = "primary",
+    preset = "PRIMARY",
     tx,
     text,
     style: styleOverride,
@@ -21,9 +21,9 @@ export function Button(props: ButtonProps) {
     ...rest
   } = props
 
-  const viewStyle = viewPresets[preset] || viewPresets.primary
+  const viewStyle = viewPresets[preset] || viewPresets.Primary
   const viewStyles = [viewStyle, styleOverride]
-  const textStyle = textPresets[preset] || textPresets.primary
+  const textStyle = textPresets[preset] || textPresets.Primary
   const textStyles = [textStyle, textStyleOverride]
 
   const content = children || <Text tx={tx} text={text} style={textStyles} />

@@ -8,22 +8,28 @@ declare let module
 
 const buttonStyleArray: ViewStyle[] = [{ paddingVertical: 100 }, { borderRadius: 0 }]
 
-const buttonTextStyleArray: TextStyle[] = [{ fontSize: 20 }, { color: "#a511dc" }]
+const buttonTextStyleArray: TextStyle[] = [{ fontSize: 20 }, { color: "#ffffff" }]
 
 storiesOf("Button", module)
   .addDecorator((fn) => <StoryScreen>{fn()}</StoryScreen>)
   .add("Style Presets", () => (
     <Story>
       <UseCase text="Primary" usage="The primary button.">
-        <Button text="Click It" preset="primary" onPress={() => Alert.alert("pressed")} />
+        <Button text="Click It" preset="Primary" onPress={() => Alert.alert("pressed")} />
+      </UseCase>
+      <UseCase text="PrimaryBlue" usage="The primary button.">
+        <Button text="Click It" preset="PrimaryBlue" onPress={() => Alert.alert("pressed")} />
+      </UseCase>
+      <UseCase text="Secondary" usage="The primary button.">
+        <Button text="Click It" preset="Secondary" onPress={() => Alert.alert("pressed")} />
       </UseCase>
       <UseCase text="Disabled" usage="The disabled behaviour of the primary button.">
-        <Button text="Click It" preset="primary" onPress={() => Alert.alert("pressed")} disabled />
+        <Button text="Click It" preset="Primary" onPress={() => Alert.alert("pressed")} disabled />
       </UseCase>
       <UseCase text="Array Style" usage="Button with array style">
         <Button
           text="Click It"
-          preset="primary"
+          preset="Primary"
           onPress={() => Alert.alert("pressed")}
           style={buttonStyleArray}
           textStyle={buttonTextStyleArray}
