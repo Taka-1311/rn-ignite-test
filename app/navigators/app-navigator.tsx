@@ -10,6 +10,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
 import { navigationRef, useBackButtonHandler } from "./navigation-utilities"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -33,19 +34,49 @@ export type NavigatorParamList = {
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>()
 
-const AppStack = () => {
+const Tab = createBottomTabNavigator()
+
+const HomeStack = createNativeStackNavigator();
+const ProfileStack = createNativeStackNavigator();
+
+const HomeStackScreens = () => {
   return (
-    <Stack.Navigator
+    <HomeStack.Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: false
       }}
       initialRouteName="welcome"
     >
       <Stack.Screen name="welcome" component={WelcomeScreen} />
       <Stack.Screen name="demo" component={DemoScreen} />
+    </HomeStack.Navigator>
+  )
+}
+
+const ProfileStackScreens = () => {
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+      initialRouteName="demoList"
+    >
       <Stack.Screen name="demoList" component={DemoListScreen} />
-      {/** 🔥 Your screens go here */}
-    </Stack.Navigator>
+    </ProfileStack.Navigator>
+  )
+}
+
+const AppStack = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName="home"
+    >
+      <Tab.Screen name="home" children={HomeStackScreens} />
+      <Tab.Screen name="profile" children={ProfileStackScreens} />
+    </Tab.Navigator>
   )
 }
 
